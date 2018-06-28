@@ -1,0 +1,3 @@
+rootProject.name = 'MSP_Components'
+
+include ':app'
