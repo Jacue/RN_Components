@@ -5,11 +5,11 @@ import {
     StyleSheet,
     TouchableOpacity,
     FlatList,
-    Dimensions
+    Dimensions,
 } from 'react-native';
 
 export default class Home extends Component {
-
+        
     render() {
         return (
             <View style={styles.container}>

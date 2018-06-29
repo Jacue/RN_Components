@@ -8,6 +8,10 @@ import {
 
 export default class button extends Component {
     
+    static navigationOptions = {
+        title: '按钮',//对页面的配置
+      };
+    
     render() {
         return (
             <View style={styles.container}>
