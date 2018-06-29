@@ -5,8 +5,9 @@ import {
     StyleSheet,
     TouchableOpacity,
 } from 'react-native';
+import RNButton from '../../components/RNButton'
 
-export default class button extends Component {
+export default class ButtonSample extends Component {
     
     static navigationOptions = {
         title: '按钮',//对页面的配置

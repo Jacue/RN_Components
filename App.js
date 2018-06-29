@@ -11,9 +11,9 @@ import {
 } from 'react-navigation';
 
 //展示的页面
-import Home from './Screens/Home/home';
-import button from './Screens/Home/button';
-import Mine from './Screens/Mine/mine';
+import Home from './screens/home/home';
+import ButtonSample from './screens/home/buttonSample';
+import Mine from './screens/mine/mine';
 
 //Tab
 const App = TabNavigator({
@@ -59,7 +59,7 @@ export default Navi = StackNavigator({
   App: {
       screen: App,
   },
-  button: {
-      screen: button,
+  ButtonSample: {
+      screen: ButtonSample,
   },
 });

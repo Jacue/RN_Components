@@ -14,7 +14,7 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={[{key: 'button',title:'RNCustomButton'}, {key: 'button2',title:'OtherComponent'}]}
+                    data={[{key: 'ButtonSample',title:'RNCustomButton'}, {key: 'button2',title:'OtherComponent'}]}
                     ItemSeparatorComponent={()=><View style={{height: 1, backgroundColor: '#DDDDDD'}}/>}//分割线组件
                     
                     renderItem={({item}) => 
