@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {
     View,
-    Text,
     StyleSheet,
-    TouchableOpacity,
+    Alert,
 } from 'react-native';
-import RNButton from '../../components/RNButton'
+
+import RNButton from '../../components/customButton'
 
 export default class ButtonSample extends Component {
     
@@ -13,12 +13,24 @@ export default class ButtonSample extends Component {
         title: '按钮',//对页面的配置
       };
     
+
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.button} activeOpacity={0.5}>
-                    <Text style={{color: 'white'}}>按钮</Text>
-                </TouchableOpacity>
+                <RNButton 
+                    style={styles.button} 
+                    title="按钮1" 
+                    titleStyle={{color: 'white'}} 
+                    onPressIn={()=>{Alert.alert('按钮1 TouchDown');}}
+                    onPressOut={()=>{Alert.alert('按钮1 TouchUp');}}
+                />
+                <RNButton 
+                    style={[styles.button, {borderColor: '#3097FD',backgroundColor: 'white', borderWidth: StyleSheet.hairlineWidth}]} 
+                    title="按钮2" 
+                    titleStyle={{ color: '#3097FD'}} 
+                    onPress={()=>{Alert.alert('按钮2 自定义样式');}}
+                />
+                
             </View>
         );
     }
@@ -27,16 +39,18 @@ export default class ButtonSample extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         backgroundColor: '#F5FCFF',
     },
     button: {
+        marginTop: 30,
+        marginLeft: 30,
         width: 120,
         height: 45,
         borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#4398ff',
+        backgroundColor: '#3097FD',
     }
 });

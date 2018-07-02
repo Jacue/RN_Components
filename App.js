@@ -6,8 +6,8 @@ import {
 
 //引入react-navigation依赖库
 import {
-    TabNavigator,
-    StackNavigator
+    createBottomTabNavigator,
+    createStackNavigator
 } from 'react-navigation';
 
 //展示的页面
@@ -16,7 +16,7 @@ import ButtonSample from './screens/home/buttonSample';
 import Mine from './screens/mine/mine';
 
 //Tab
-const App = TabNavigator({
+const App = createBottomTabNavigator({
     //每一个页面的配置
     Home: {
         screen: Home,
@@ -55,7 +55,7 @@ App.navigationOptions = ({ navigation }) => {
 /*
  * 初始化StackNavigator
  */
-export default Navi = StackNavigator({
+export default Navi = createStackNavigator({
   App: {
       screen: App,
   },
