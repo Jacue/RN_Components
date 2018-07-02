@@ -61649,7 +61649,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             screen: _buttonSample2.default
         }
     });
-},493,[118,12,494,609,610,613,614,615],"App.js");
+},493,[118,12,494,609,610,614,615,616],"App.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = {
     get createNavigationContainer() {
@@ -79826,7 +79826,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
     var _class,
-        _temp,
+        _temp2,
         _jsxFileName = "/Users/jacue/Desktop/MSP_Components/screens/home/buttonSample.js";
 
     var _reactNative = _require(_dependencyMap[2], "react-native");
@@ -79862,25 +79862,39 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         };
     }
 
-    var ButtonSample = _wrapComponent("ButtonSample")((_temp = _class = function (_Component) {
+    var ButtonSample = _wrapComponent("ButtonSample")((_temp2 = _class = function (_Component) {
         _inherits(ButtonSample, _Component);
 
         function ButtonSample() {
+            var _ref;
+
+            var _temp, _this, _ret;
+
             _classCallCheck(this, ButtonSample);
 
-            return _possibleConstructorReturn(this, (ButtonSample.__proto__ || Object.getPrototypeOf(ButtonSample)).apply(this, arguments));
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ButtonSample.__proto__ || Object.getPrototypeOf(ButtonSample)).call.apply(_ref, [this].concat(args))), _this), _this.chooseCheckButton = function () {
+                _reactNative.Alert.alert(!_this.checkButton.state.isSelected ? '选中单选按钮' : "取消选中单选按钮");
+
+                _this.checkButton.setSelected(!_this.checkButton.state.isSelected);
+            }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(ButtonSample, [{
             key: "render",
             value: function render() {
+                var _this2 = this;
+
                 return _react3.default.createElement(
                     _reactNative.View,
                     {
                         style: styles.container,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 19
+                            lineNumber: 24
                         }
                     },
                     _react3.default.createElement(_customButton2.default, {
@@ -79897,7 +79911,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 20
+                            lineNumber: 25
                         }
                     }),
                     _react3.default.createElement(_customButton2.default, {
@@ -79915,22 +79929,55 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 27
+                            lineNumber: 32
                         }
                     }),
                     _react3.default.createElement(_customButton2.default, {
-                        style: styles.button,
-                        imageUri: _require(_dependencyMap[4], '../../images/checkbox.png'),
-                        title: "\u6309\u94AE3",
-                        titleStyle: {
-                            color: 'white'
+                        ref: function ref(c) {
+                            _this2.checkButton = c;
                         },
-                        onPress: function onPress() {
-                            _reactNative.Alert.alert('按钮3 自定义样式');
+                        style: styles.button,
+                        disabled: true,
+                        backgroundImageUri: _require(_dependencyMap[4], '../../images/holderImage.png'),
+                        backgroundImageStyle: {
+                            width: 100,
+                            height: 45,
+                            position: 'absolute',
+                            borderRadius: 5
+                        },
+                        imageUri: _require(_dependencyMap[5], '../../images/checkbox.png'),
+                        selectedImageUri: _require(_dependencyMap[6], '../../images/checkbox-selected.png'),
+                        title: "\u52FE\u90091",
+                        titleStyle: {
+                            color: 'white',
+                            marginLeft: 10
+                        },
+                        onPress: this.chooseCheckButton,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 38
+                        }
+                    }),
+                    _react3.default.createElement(_customButton2.default, {
+                        style: styles.verticalButton,
+                        disabled: true,
+                        backgroundImageUri: _require(_dependencyMap[4], '../../images/holderImage.png'),
+                        backgroundImageStyle: {
+                            width: 45,
+                            height: 100,
+                            position: 'absolute',
+                            borderRadius: 5
+                        },
+                        imageUri: _require(_dependencyMap[5], '../../images/checkbox.png'),
+                        selectedImageUri: _require(_dependencyMap[6], '../../images/checkbox-selected.png'),
+                        title: "\u52FE\u90092",
+                        titleStyle: {
+                            color: 'white',
+                            marginTop: 10
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 33
+                            lineNumber: 52
                         }
                     })
                 );
@@ -79940,7 +79987,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return ButtonSample;
     }(_react2.Component), _class.navigationOptions = {
         title: '按钮'
-    }, _temp));
+    }, _temp2));
 
     exports.default = ButtonSample;
 
@@ -79955,14 +80002,208 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         },
         button: {
             marginTop: 30,
-            marginLeft: 30,
-            width: 120,
+            marginLeft: 15,
+            width: 100,
             height: 45,
             borderRadius: 5,
             backgroundColor: '#3097FD'
+        },
+        verticalButton: {
+            marginTop: 30,
+            marginLeft: 15,
+            width: 45,
+            height: 100,
+            flexDirection: 'column'
         }
     });
-},610,[118,130,12,617,618],"screens/home/buttonSample.js");
+},610,[118,130,12,611,612,613,618],"screens/home/buttonSample.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/jacue/Desktop/MSP_Components/components/customButton.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  var _propTypes = _require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    RNButton: {
+      displayName: "RNButton"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/jacue/Desktop/MSP_Components/components/customButton.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var RNButton = _wrapComponent("RNButton")(function (_Component) {
+    _inherits(RNButton, _Component);
+
+    function RNButton(props) {
+      _classCallCheck(this, RNButton);
+
+      var _this = _possibleConstructorReturn(this, (RNButton.__proto__ || Object.getPrototypeOf(RNButton)).call(this, props));
+
+      _this.setSelected = function (isSel) {
+        if (isSel !== _this.state.isSelected) {
+          _this.setState({
+            isSelected: isSel
+          });
+        }
+      };
+
+      _this.state = {
+        isSelected: false
+      };
+      return _this;
+    }
+
+    _createClass(RNButton, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.TouchableOpacity,
+          {
+            style: [styles.container, this.props.style],
+            disabled: this.props.disabled,
+            onPress: this.props.onPress,
+            onPressIn: this.props.onPressIn,
+            onPressOut: this.props.onPressOut,
+            activeOpacity: this.props.activeOpacity,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 31
+            }
+          },
+          this.props.backgroundImageUri && _react3.default.createElement(_reactNative.Image, {
+            style: this.props.backgroundImageStyle,
+            source: this.props.backgroundImageUri,
+            resizeMode: this.props.backgroundImageResizeMode,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          }),
+          this.props.imageUri && _react3.default.createElement(_reactNative.Image, {
+            style: this.props.imageStyle,
+            source: this.state.isSelected ? this.props.selectedImageUri : this.props.imageUri,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 42
+            }
+          }),
+          _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: this.props.titleStyle,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 44
+              }
+            },
+            this.props.title
+          )
+        );
+      }
+    }]);
+
+    return RNButton;
+  }(_react2.Component));
+
+  exports.default = RNButton;
+  RNButton.propType = {
+    style: _reactNative.ViewPropTypes.style,
+    title: _propTypes2.default.string.isRequired,
+    titleStyle: _reactNative.Text.propTypes.style,
+    imageUri: _reactNative.ImageSourcePropType,
+    selectedImageUri: _propTypes2.default.string,
+    imageStyle: _reactNative.Image.propTypes.style,
+    backgroundImageUri: _reactNative.ImageSourcePropType,
+    backgroundImageStyle: _reactNative.Image.propTypes.style,
+    backgroundImageResizeMode: "cover" | "contain" | "stretch" | "repeat" | "center",
+    disabled: _propTypes2.default.bool,
+    disabledStyle: _reactNative.ViewPropTypes.style,
+    onPress: _propTypes2.default.func,
+    onPressIn: _propTypes2.default.func,
+    onPressOut: _propTypes2.default.func,
+    isSelected: _propTypes2.default.bool,
+    activeOpacity: _propTypes2.default.number
+  };
+  RNButton.defaultProps = {
+    backgroundImageResizeMode: "cover",
+    touchFeedbackType: "highlighted",
+    disabled: false,
+    currentState: "normal",
+    isSelected: false,
+    activeOpacity: 0.85
+  };
+
+  var styles = _reactNative.StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    backgroundImage: {
+      position: 'absolute'
+    }
+  });
+},611,[118,130,12,294],"components/customButton.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
+    "__packager_asset": true,
+    "httpServerLocation": "/assets/images",
+    "width": 300,
+    "height": 179,
+    "scales": [1],
+    "hash": "2f2cb202bd5ac2a21ae76d8910e2e980",
+    "name": "holderImage",
+    "type": "png"
+  });
+},612,[326],"images/holderImage.png");
+__d(function (global, _require, module, exports, _dependencyMap) {
+   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
+      "__packager_asset": true,
+      "httpServerLocation": "/assets/images",
+      "width": 22,
+      "height": 22,
+      "scales": [1],
+      "hash": "0cb8485e6b8215615fee1bfb299d9e95",
+      "name": "checkbox",
+      "type": "png"
+   });
+},613,[326],"images/checkbox.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -80079,7 +80320,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             backgroundColor: '#4398ff'
         }
     });
-},613,[118,130,12],"screens/mine/mine.js");
+},614,[118,130,12],"screens/mine/mine.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -80091,7 +80332,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     "name": "ic_home",
     "type": "png"
   });
-},614,[326],"images/ic_home.png");
+},615,[326],"images/ic_home.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -80103,168 +80344,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     "name": "ic_me",
     "type": "png"
   });
-},615,[326],"images/ic_me.png");
-__d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _react2 = _require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = _require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
-  var _jsxFileName = "/Users/jacue/Desktop/MSP_Components/components/customButton.js";
-
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-  var _reactNative = _require(_dependencyMap[2], "react-native");
-
-  var _propTypes = _require(_dependencyMap[3], "prop-types");
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _components = {
-    RNButton: {
-      displayName: "RNButton"
-    }
-  };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/jacue/Desktop/MSP_Components/components/customButton.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var RNButton = _wrapComponent("RNButton")(function (_Component) {
-    _inherits(RNButton, _Component);
-
-    function RNButton(props) {
-      _classCallCheck(this, RNButton);
-
-      var _this = _possibleConstructorReturn(this, (RNButton.__proto__ || Object.getPrototypeOf(RNButton)).call(this, props));
-
-      _this.state = {
-        isSelected: false
-      };
-      return _this;
-    }
-
-    _createClass(RNButton, [{
-      key: "render",
-      value: function render() {
-        return _react3.default.createElement(
-          _reactNative.TouchableOpacity,
-          {
-            style: [styles.container, this.props.style],
-            onPress: this.props.onPress,
-            onPressIn: this.props.onPressIn,
-            onPressOut: this.props.onPressOut,
-            activeOpacity: this.props.activeOpacity,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 24
-            }
-          },
-          this.props.backgroundImageUri && _react3.default.createElement(_reactNative.Image, {
-            style: [styles.backgroundImage, this.props.backgroundImage],
-            source: this.props.backgroundImageUri,
-            resizeMode: this.props.backgroundImageResizeMode,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 31
-            }
-          }),
-          this.props.imageUri && _react3.default.createElement(_reactNative.Image, {
-            style: [styles.image, this.props.imageStyle],
-            source: this.state.isSelected ? this.props.imageUri : this.props.selectedImageUri,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 34
-            }
-          }),
-          _react3.default.createElement(
-            _reactNative.Text,
-            {
-              style: [styles.title, this.props.titleStyle],
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 36
-              }
-            },
-            this.props.title
-          )
-        );
-      }
-    }]);
-
-    return RNButton;
-  }(_react2.Component));
-
-  exports.default = RNButton;
-  RNButton.propType = {
-    style: _reactNative.ViewPropTypes.style,
-    title: _propTypes2.default.string.isRequired,
-    titleStyle: _reactNative.Text.propTypes.style,
-    imageUri: _reactNative.ImageSourcePropType,
-    selectedImageUri: _propTypes2.default.string,
-    imageStyle: _reactNative.Image.propTypes.style,
-    backgroundImageUri: _reactNative.ImageSourcePropType,
-    backgroundImageResizeMode: "cover" | "contain" | "stretch" | "repeat" | "center",
-    disable: _propTypes2.default.bool,
-    disableStyle: _reactNative.ViewPropTypes.style,
-    onPress: _propTypes2.default.func,
-    onPressIn: _propTypes2.default.func,
-    onPressOut: _propTypes2.default.func,
-    currentState: "normal" | "highlighted" | "selected" | "disable",
-    activeOpacity: _propTypes2.default.number
-  };
-  RNButton.defaultProps = {
-    backgroundImageResizeMode: "cover",
-    touchFeedbackType: "highlighted",
-    disable: false,
-    currentState: "normal",
-    activeOpacity: 0.85
-  };
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    backgroundImage: {
-      flex: 1
-    },
-    backgroundImage: {
-      position: 'absolute'
-    },
-    image: {
-      position: 'absolute'
-    },
-    title: {
-      position: 'absolute'
-    }
-  });
-},617,[118,130,12,294],"components/customButton.js");
+},616,[326],"images/ic_me.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
    module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
       "__packager_asset": true,
@@ -80272,11 +80352,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       "width": 22,
       "height": 22,
       "scales": [1],
-      "hash": "0cb8485e6b8215615fee1bfb299d9e95",
-      "name": "checkbox",
+      "hash": "66c68a52e7f25f817997dc4d6ceee901",
+      "name": "checkbox-selected",
       "type": "png"
    });
-},618,[326],"images/checkbox.png");
+},618,[326],"images/checkbox-selected.png");
 require(52);
 require(11);
 //# sourceMappingURL=index.map

@@ -13,14 +13,19 @@ export default class ButtonSample extends Component {
         title: '按钮',//对页面的配置
       };
     
+    // 点击单选按钮
+    chooseCheckButton = () => {
+        Alert.alert(!this.checkButton.state.isSelected ? '选中单选按钮' : "取消选中单选按钮");
+        this.checkButton.setSelected(!this.checkButton.state.isSelected);
+    }
 
     render() {
         return (
             <View style={styles.container}>
                 <RNButton 
-                    style={styles.button} 
+                    style={styles.button}
                     title="按钮1" 
-                    titleStyle={{color: 'white'}} 
+                    titleStyle={{color: 'white'}}
                     onPressIn={()=>{Alert.alert('按钮1 TouchDown');}}
                     onPressOut={()=>{Alert.alert('按钮1 TouchUp');}}
                 />
@@ -30,7 +35,29 @@ export default class ButtonSample extends Component {
                     titleStyle={{ color: '#3097FD'}} 
                     onPress={()=>{Alert.alert('按钮2 自定义样式');}}
                 />
-                
+                <RNButton 
+                    ref={(c) => {
+                        this.checkButton = c;
+                    }}
+                    style={styles.button}
+                    backgroundImageUri={require('../../images/holderImage.png')}
+                    backgroundImageStyle={{width: 100,height: 45, position: 'absolute',borderRadius: 5}}
+                    imageUri={require('../../images/checkbox.png')}
+                    selectedImageUri={require('../../images/checkbox-selected.png')}
+                    title="勾选1" 
+                    titleStyle={{ color: 'white', marginLeft: 10}}
+                    onPress={this.chooseCheckButton}
+                />
+                <RNButton 
+                    style={styles.verticalButton} 
+                    disabled
+                    backgroundImageUri={require('../../images/holderImage.png')}
+                    backgroundImageStyle={{width: 45,height: 100, position: 'absolute',borderRadius: 5}}
+                    imageUri={require('../../images/checkbox.png')}
+                    selectedImageUri={require('../../images/checkbox-selected.png')}
+                    title="勾选2" 
+                    titleStyle={{ color: 'white', marginTop: 10}}
+                />
             </View>
         );
     }
@@ -47,10 +74,17 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 30,
-        marginLeft: 30,
-        width: 120,
+        marginLeft: 15,
+        width: 100,
         height: 45,
         borderRadius: 5,
         backgroundColor: '#3097FD',
+    },
+    verticalButton: {
+        marginTop: 30,
+        marginLeft: 15,
+        width: 45,
+        height: 100,
+        flexDirection: 'column',
     }
 });

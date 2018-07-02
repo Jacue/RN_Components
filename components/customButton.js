@@ -5,7 +5,8 @@ import {
   StyleSheet, 
   ViewPropTypes, 
   Image,
-  ImageSourcePropType
+  ImageSourcePropType,
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -19,22 +20,28 @@ export default class RNButton extends Component {
     };
   }
 
+  setSelected = (isSel) => {
+    if (isSel !== this.state.isSelected) {
+      this.setState({isSelected: isSel});
+    }
+  }
+
   render() {
     return (
       <TouchableOpacity 
         style={[styles.container, this.props.style]} 
+        disabled={this.props.disabled}
         onPress={this.props.onPress}
         onPressIn={this.props.onPressIn}
         onPressOut={this.props.onPressOut}
         activeOpacity={this.props.activeOpacity}>
-        {this.props.backgroundImageUri && (
-          <Image style={[styles.backgroundImage, this.props.backgroundImage]} source={this.props.backgroundImageUri} resizeMode={this.props.backgroundImageResizeMode}/>
-        )}
-        
-          <Image style={[styles.image, this.props.imageStyle]} source={this.state.isSelected ? this.props.imageUri: this.props.selectedImageUri}/>
-        
-        
-
+          {this.props.backgroundImageUri && (
+            <Image style={this.props.backgroundImageStyle} source={this.props.backgroundImageUri} resizeMode={this.props.backgroundImageResizeMode}/>
+          )}
+          {this.props.imageUri && (
+            <Image style={this.props.imageStyle} source={this.state.isSelected ? this.props.selectedImageUri: this.props.imageUri}/>
+          )}
+        <Text style={this.props.titleStyle}>{this.props.title}</Text>
       </TouchableOpacity>
     );
   }
@@ -48,21 +55,23 @@ RNButton.propType = {
   selectedImageUri: PropTypes.string, // 选中的icon
   imageStyle: Image.propTypes.style,  // icon样式
   backgroundImageUri: ImageSourcePropType,// 背景图片
+  backgroundImageStyle: Image.propTypes.style, // 背景图片样式
   backgroundImageResizeMode: "cover" | "contain" | "stretch" | "repeat" | "center", // 背景图片填充方式
-  disable: PropTypes.bool,  // 是否可点击
-  disableStyle: ViewPropTypes.style, // 不可点击时的样式
+  disabled: PropTypes.bool,  // 是否可点击
+  disabledStyle: ViewPropTypes.style, // 不可点击时的样式
   onPress: PropTypes.func,  // 点击事件
   onPressIn: PropTypes.func,// touchDown事件
   onPressOut: PropTypes.func,// touchUp事件
-  currentState: "normal" | "highlighted" | "selected" | "disable",
+  isSelected: PropTypes.bool, // 是否选中
   activeOpacity: PropTypes.number, // 触摸时透明度，0.85的效果跟iOS原生按钮相同，如果设置为1.0，则看不到点击效果
 };
 
 RNButton.defaultProps = {
   backgroundImageResizeMode: "cover",
   touchFeedbackType: "highlighted",
-  disable: false,
+  disabled: false,
   currentState: "normal",
+  isSelected: false,
   activeOpacity: 0.85,
 };
 
@@ -73,15 +82,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backgroundImage: {
-    flex: 1,
-  },
-  backgroundImage: {
-    position: 'absolute',
-  },
-  image: {
-    position: 'absolute',
-  },
-  title: {
-    position: 'absolute',
+    position: 'absolute',//相对父元素进行绝对定位
   },
 });
