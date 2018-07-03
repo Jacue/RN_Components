@@ -29,11 +29,12 @@ export default class RNButton extends Component {
   render() {
     return (
       <TouchableOpacity 
-        style={[styles.container, this.props.style]} 
+        style={[styles.container, this.props.style, this.props.disabled && this.props.disabledStyle]} // 默认、style、disabledStyle,优先级依次提高
         disabled={this.props.disabled}
         onPress={this.props.onPress}
         onPressIn={this.props.onPressIn}
         onPressOut={this.props.onPressOut}
+        onLongPress={this.props.onLongPress}
         activeOpacity={this.props.activeOpacity}>
           {this.props.backgroundImageUri && (
             <Image style={this.props.backgroundImageStyle} source={this.props.backgroundImageUri} resizeMode={this.props.backgroundImageResizeMode}/>
@@ -41,7 +42,9 @@ export default class RNButton extends Component {
           {this.props.imageUri && (
             <Image style={this.props.imageStyle} source={this.state.isSelected ? this.props.selectedImageUri: this.props.imageUri}/>
           )}
-        <Text style={this.props.titleStyle}>{this.props.title}</Text>
+          {this.props.title && (
+            <Text style={this.props.titleStyle}>{this.props.title}</Text>
+          )}
       </TouchableOpacity>
     );
   }
@@ -49,7 +52,7 @@ export default class RNButton extends Component {
 
 RNButton.propType = {
   style: ViewPropTypes.style,
-  title: PropTypes.string.isRequired, // 文字
+  title: PropTypes.string, // 文字
   titleStyle: Text.propTypes.style,   // 文字样式
   imageUri: ImageSourcePropType,         // icon
   selectedImageUri: PropTypes.string, // 选中的icon
@@ -62,6 +65,7 @@ RNButton.propType = {
   onPress: PropTypes.func,  // 点击事件
   onPressIn: PropTypes.func,// touchDown事件
   onPressOut: PropTypes.func,// touchUp事件
+  onLongPress: PropTypes.func, // 长按事件
   isSelected: PropTypes.bool, // 是否选中
   activeOpacity: PropTypes.number, // 触摸时透明度，0.85的效果跟iOS原生按钮相同，如果设置为1.0，则看不到点击效果
 };

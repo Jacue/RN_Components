@@ -8,13 +8,22 @@ import {
     Dimensions,
 } from 'react-native';
 
+const homeItemsDatasource = [
+    {
+        key: 'ButtonSample',title:'RNCustomButton'
+    }, 
+    {
+        key: 'button2',title:'OtherComponent'
+    }
+];
+
 export default class Home extends Component {
         
     render() {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={[{key: 'ButtonSample',title:'RNCustomButton'}, {key: 'button2',title:'OtherComponent'}]}
+                    data={homeItemsDatasource}
                     ItemSeparatorComponent={()=><View style={{height: 1, backgroundColor: '#DDDDDD'}}/>}//分割线组件
                     
                     renderItem={({item}) => 
