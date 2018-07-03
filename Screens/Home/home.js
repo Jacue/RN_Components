@@ -13,7 +13,7 @@ const homeItemsDatasource = [
         key: 'ButtonSample',title:'RNCustomButton'
     }, 
     {
-        key: 'button2',title:'OtherComponent'
+        key: 'MaskViewSample',title:'RNMaskView'
     }
 ];
 

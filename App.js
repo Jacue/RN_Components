@@ -13,6 +13,7 @@ import {
 //展示的页面
 import Home from './screens/home/home';
 import ButtonSample from './screens/home/buttonSample';
+import MaskViewSample from './screens/home/maskViewSample';
 import Mine from './screens/mine/mine';
 
 //Tab
@@ -57,9 +58,12 @@ App.navigationOptions = ({ navigation }) => {
  */
 export default Navi = createStackNavigator({
   App: {
-      screen: App,
+        screen: App,
   },
   ButtonSample: {
-      screen: ButtonSample,
+        screen: ButtonSample,
+  },
+  MaskViewSample: {
+        screen: MaskViewSample,
   },
 });
